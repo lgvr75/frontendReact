@@ -1,10 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardComponent from "../../Components/Cards/Cards.jsx";
 import Form from 'react-bootstrap/Form';
 
 
 export default function ListaPeliculas() {
-let pelis =[
+
+
+
+    const [search, setSearch] = useState('')
+    const [peliculas, setPeliculas] = useState([])
+
+    useEffect(() => {
+        fetch('https://api-pelis-back.onrender.com/comedia')
+        .then(response => response.json())
+        .then(data => {
+            setPeliculas(data.peliculas)
+        })
+    }, [])
+
+    const handleSearch = (e) => {
+        //console.log(e.target.value)
+        setSearch(e.target.value)
+    }
+
+
+
+
+    let pelis =[
     {
         title: 'Hombre Araña',
         description: 'pelicula de Accion',

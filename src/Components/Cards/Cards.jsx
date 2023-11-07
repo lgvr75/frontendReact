@@ -11,14 +11,13 @@ export default function CardComponent(props){
 
    
   const handlerFavorite = () => {
-    if (!setIsFavorite){
+    if (isFavorite==false){
       setIsFavorite(true)
-      let iconMeGusta = '<FaRegHeart />'
-''      
+      console.log(isFavorite)
     }
     else{
       setIsFavorite(false)
-      let iconMeGusta = '<FaHeart />'
+      console.log(isFavorite)
     }
   }
 
@@ -30,7 +29,7 @@ return(
         <Card.Text>
             {props.description}
         </Card.Text>
-        <Button variant="primary" onClick={handlerFavorite}>Me Gusta {iconMeGusta}</Button>
+        <Button variant="primary" onClick={handlerFavorite}>Me Gusta {isFavorite  ? <FaHeart /> : <FaRegHeart /> }</Button>
       </Card.Body>
     </Card>
     )
